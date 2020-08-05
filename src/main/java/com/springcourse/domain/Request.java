@@ -50,8 +50,8 @@ public class Request {
 	private RequestState state;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
+	@JoinColumn(name = "owner_id", nullable = false)
+	private User owner;
 	
 	@OneToMany(mappedBy = "request")
 	private List<RequestStage> stages;
