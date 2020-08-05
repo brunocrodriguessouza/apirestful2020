@@ -1,6 +1,5 @@
 package com.springcourse.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.springcourse.domain.enums.RequestState;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +27,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-@Entity(name = "request")
+@Entity
+@Table(name = "request")
 public class Request {
 	
 	@Id
@@ -44,12 +47,12 @@ public class Request {
 	
 	@Column(length = 12, nullable = false)
 	@Enumerated(EnumType.STRING)
-	private RequestStage state;
+	private RequestState state;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 	
 	@OneToMany(mappedBy = "request")
-	private List<RequestStage> stages = new ArrayList<>();
+	private List<RequestStage> stages;
 }

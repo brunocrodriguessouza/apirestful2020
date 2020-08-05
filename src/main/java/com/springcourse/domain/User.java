@@ -1,6 +1,5 @@
 package com.springcourse.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.springcourse.domain.enums.Role;
 
@@ -22,7 +22,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-@Entity(name = "user")
+@Entity
+@Table(name = "user")
 public class User {
 	
 	@Id
@@ -43,8 +44,8 @@ public class User {
 	private Role role;
 	
 	@OneToMany(mappedBy = "user")
-	private List<Request> requests = new ArrayList<>();
+	private List<Request> requests;
 	
 	@OneToMany(mappedBy = "user")
-	private List<RequestStage> stages = new ArrayList<>();
+	private List<RequestStage> stages;
 }
