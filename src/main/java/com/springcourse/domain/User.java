@@ -43,9 +43,9 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "owner")
 	private List<Request> requests;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "owner")
 	private List<RequestStage> stages;
 }
